@@ -5,7 +5,7 @@ The notebook runs in a google colab environment. The dataset is read from google
 
 The architecture has two encoder backbones (ResNet-50/101) with the same decoder. The code uses Bilinear upsampling to reconstruct the final mask. The backbones can be load with ImageNet weights for transfer learning. The fine-tuning process uses the exponential schedule learning (10 epochs) for decoder initialization and compiles the model with an SGD optimizer with a learning rate (hyperparameter).
 
-The input has tiles with 500x500 pixels (width, height), and there is an option for data augmentation (random flip, random crop, random brightness, random contrast, rotation of 90 degrees). The crop hyperparameter can be chosen up to 500x500.
+The input has tiles with 500x500 pixels (width, height), and there is an option for data augmentation (random flip, random crop, random brightness, random contrast, rotation of 90 degrees). The crop hyperparameter can be chosen up to 500x500. The code uses the tf.data pipeline to read the datasets.
 
 There are two options for optimizers: SGD and ADAM. The user chooses learning rate and callback multiply by 0.2 if the validation loss doesn't change after ten epochs. Another useful hyperparameter is the step, which controls the steps on epochs.
 
